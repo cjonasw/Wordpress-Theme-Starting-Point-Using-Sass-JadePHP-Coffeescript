@@ -1,0 +1,6 @@
+nav
+  h1: a(href= get_option('home'))= bloginfo('name')
+  ul#pages
+    li: a(href= get_option('home')) Home
+    :php
+      wp_list_pages('title_li=');
