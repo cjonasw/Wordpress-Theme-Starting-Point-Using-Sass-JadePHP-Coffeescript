@@ -1,5 +1,8 @@
-**/*.javascript
-**/*.css
+*.js
+*.js.map
+!Gruntfile.js
+*.css
+*.css.map
 .sass-cache
 node_modules
-**/*.php
+*.php
