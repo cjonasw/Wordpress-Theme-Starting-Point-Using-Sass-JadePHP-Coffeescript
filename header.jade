@@ -1,6 +1,15 @@
+!!! 5
+<html lang='en'>
+
 head
   meta(charset="UTF-8")
   title Document
   link(rel="stylesheet" type="text/css" href= bloginfo('stylesheet_url') media="screen")
   :php
     wp_head();
+
+<body>
+
+:php
+  get_template_part('nav');
+  get_sidebar();

@@ -1,40 +1,32 @@
-!!! 5
-html(lang="en")
-  :php
-    get_header();
-    
-  body
+:php
+  get_header();
 
-    :php
-      get_template_part('nav');
-      get_sidebar();
+  if (have_posts()) :
+  while (have_posts()) : the_post();
 
-      if (have_posts()) :
-      while (have_posts()) : the_post();
-     
-    article
-      date= the_time('j F \'y')
-      h2: a(href= the_permalink())= the_title()
-      p= the_content('')
+article
+  date= the_time('j F \'y')
+  h2: a(href= the_permalink())= the_title()
+  p= the_content('')
 
-      - endwhile;
+  - endwhile;
 
-      div(class="pagination")
-      ul
-        - if(next_posts_link('Older')) :
-        li.older= next_posts_link('Older')
-        - endif;
-      
-        - if(previous_posts_link('Newer')) :
-        li.older= previous_posts_link('Newer')
-          
-      - endif;
+  div(class="pagination")
+  ul
+    - if(next_posts_link('Older')) :
+    li.older= next_posts_link('Older')
+    - endif;
 
-      - else :
+    - if(previous_posts_link('Newer')) :
+    li.older= previous_posts_link('Newer')
 
-      | Nothing found
+  - endif;
 
-      - endif;
+  - else :
 
-    :php
-      get_footer();
+  | Nothing found
+
+  - endif;
+
+:php
+  get_footer();
