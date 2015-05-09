@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       dev: {
         files: [
           {
-            src: ['**/*.sass', '!**/_*.sass'],
+            src: ['**/*.sass', '!node_modules/**/*'],
             cwd: '',
             dest: '',
             ext: '.css',
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
       dist: {
         files: [
           {
-            src: '**/*.coffee',
+            src: ['**/*.coffee', '!node_modules/**/*'],
             cwd: '',
             dest: '',
             ext: '.js',
@@ -68,7 +68,6 @@ module.exports = function(grunt) {
     jadephp: {
       compile: {
         options: {
-          // doctype: 'html',
           data: {
             debug: false
           }
@@ -78,7 +77,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: '',
             dest: '',
-            src: ['**/*.jade'], // , '!bower_components/*'
+            src: ['**/*.jade', '!node_modules/**/*'],
             ext: '.php'
           }
         ]
@@ -88,7 +87,12 @@ module.exports = function(grunt) {
   });
 
   // Default task
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', [
+    'jadephp',
+    'coffee',
+    'sass',
+    'watch'
+  ]);
 
   // Load up tasks
   grunt.loadNpmTasks('grunt-contrib-sass');
